@@ -85,4 +85,3 @@ Proyecto desarrollado por **Daniel Morales López**
 Data Engineer | Especialista en procesos ETL, Data Warehousing y Business Intelligence  
 Costa Rica 🌎   
 
----

@@ -1,0 +1,1033 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/ML-RefVm-822010\\MORALLES_24;Datawarehouse_WWI",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "ML-RefVm-822010\\MORALLES_24",
+            "database": "Datawarehouse_WWI"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "ml-refvm-822010\\moralles_24;Datawarehouse_WWI",
+          "Username": "sa",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "DIM SUPPLIERS",
+        "columns": [
+          {
+            "name": "SupplierID",
+            "dataType": "int64",
+            "sourceColumn": "SupplierID"
+          },
+          {
+            "name": "SupplierName",
+            "dataType": "string",
+            "sourceColumn": "SupplierName"
+          },
+          {
+            "name": "SupplierCategoryID",
+            "dataType": "int64",
+            "sourceColumn": "SupplierCategoryID"
+          },
+          {
+            "name": "SupplierCategoryName",
+            "dataType": "string",
+            "sourceColumn": "SupplierCategoryName"
+          },
+          {
+            "name": "PrimaryContactPersonID",
+            "dataType": "int64",
+            "sourceColumn": "PrimaryContactPersonID"
+          },
+          {
+            "name": "FullName",
+            "dataType": "string",
+            "sourceColumn": "FullName"
+          },
+          {
+            "name": "EmailAddress",
+            "dataType": "string",
+            "sourceColumn": "EmailAddress"
+          },
+          {
+            "name": "PhoneNumber",
+            "dataType": "string",
+            "sourceColumn": "PhoneNumber"
+          },
+          {
+            "name": "StockItemID",
+            "dataType": "int64",
+            "sourceColumn": "StockItemID"
+          },
+          {
+            "name": "StockItemName",
+            "dataType": "string",
+            "sourceColumn": "StockItemName"
+          },
+          {
+            "name": "DeliveryMethodID",
+            "dataType": "int64",
+            "sourceColumn": "DeliveryMethodID"
+          },
+          {
+            "name": "DeliveryMethodName",
+            "dataType": "string",
+            "sourceColumn": "DeliveryMethodName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ML-RefVm-822010\\MORALLES_24;Datawarehouse_WWI\",",
+                "    #\"dbo_DIM SUPPLIERS\" = Source{[Schema=\"dbo\",Item=\"DIM SUPPLIERS\"]}[Data]",
+                "in",
+                "    #\"dbo_DIM SUPPLIERS\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DIM_CUSTOMERS",
+        "columns": [
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "CustomerName",
+            "dataType": "string",
+            "sourceColumn": "CustomerName"
+          },
+          {
+            "name": "CustomerCategoryID",
+            "dataType": "int64",
+            "sourceColumn": "CustomerCategoryID"
+          },
+          {
+            "name": "CustomerCategoryName",
+            "dataType": "string",
+            "sourceColumn": "CustomerCategoryName"
+          },
+          {
+            "name": "BuyingGroupID",
+            "dataType": "int64",
+            "sourceColumn": "BuyingGroupID"
+          },
+          {
+            "name": "BuyingGroupName",
+            "dataType": "string",
+            "sourceColumn": "BuyingGroupName"
+          },
+          {
+            "name": "PhoneNumber",
+            "dataType": "string",
+            "sourceColumn": "PhoneNumber"
+          },
+          {
+            "name": "FaxNumber",
+            "dataType": "string",
+            "sourceColumn": "FaxNumber"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ML-RefVm-822010\\MORALLES_24;Datawarehouse_WWI\",",
+                "    dbo_DIM_CUSTOMERS = Source{[Schema=\"dbo\",Item=\"DIM_CUSTOMERS\"]}[Data]",
+                "in",
+                "    dbo_DIM_CUSTOMERS"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DIM_LOCATION",
+        "columns": [
+          {
+            "name": "CityID",
+            "dataType": "int64",
+            "sourceColumn": "CityID"
+          },
+          {
+            "name": "CityName",
+            "dataType": "string",
+            "sourceColumn": "CityName"
+          },
+          {
+            "name": "CityPopulation",
+            "dataType": "int64",
+            "sourceColumn": "CityPopulation"
+          },
+          {
+            "name": "StateProvinceID",
+            "dataType": "int64",
+            "sourceColumn": "StateProvinceID"
+          },
+          {
+            "name": "StateProvinceName",
+            "dataType": "string",
+            "sourceColumn": "StateProvinceName"
+          },
+          {
+            "name": "StateProvinceCode",
+            "dataType": "string",
+            "sourceColumn": "StateProvinceCode"
+          },
+          {
+            "name": "StatePopulation",
+            "dataType": "int64",
+            "sourceColumn": "StatePopulation"
+          },
+          {
+            "name": "CountryID",
+            "dataType": "int64",
+            "sourceColumn": "CountryID"
+          },
+          {
+            "name": "CountryName",
+            "dataType": "string",
+            "sourceColumn": "CountryName"
+          },
+          {
+            "name": "Continent",
+            "dataType": "string",
+            "sourceColumn": "Continent"
+          },
+          {
+            "name": "CountryPopulation",
+            "dataType": "int64",
+            "sourceColumn": "CountryPopulation"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ML-RefVm-822010\\MORALLES_24;Datawarehouse_WWI\",",
+                "    dbo_DIM_LOCATION = Source{[Schema=\"dbo\",Item=\"DIM_LOCATION\"]}[Data]",
+                "in",
+                "    dbo_DIM_LOCATION"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DIM_PEOPLE",
+        "columns": [
+          {
+            "name": "PersonID",
+            "dataType": "int64",
+            "sourceColumn": "PersonID"
+          },
+          {
+            "name": "FullName",
+            "dataType": "string",
+            "sourceColumn": "FullName"
+          },
+          {
+            "name": "PreferredName",
+            "dataType": "string",
+            "sourceColumn": "PreferredName"
+          },
+          {
+            "name": "SearchName",
+            "dataType": "string",
+            "sourceColumn": "SearchName"
+          },
+          {
+            "name": "IsPermittedToLogon",
+            "dataType": "boolean",
+            "sourceColumn": "IsPermittedToLogon"
+          },
+          {
+            "name": "LogonName",
+            "dataType": "string",
+            "sourceColumn": "LogonName"
+          },
+          {
+            "name": "IsExternalLogonProvider",
+            "dataType": "boolean",
+            "sourceColumn": "IsExternalLogonProvider"
+          },
+          {
+            "name": "IsSystemUser",
+            "dataType": "boolean",
+            "sourceColumn": "IsSystemUser"
+          },
+          {
+            "name": "IsEmployee",
+            "dataType": "boolean",
+            "sourceColumn": "IsEmployee"
+          },
+          {
+            "name": "IsSalesperson",
+            "dataType": "boolean",
+            "sourceColumn": "IsSalesperson"
+          },
+          {
+            "name": "UserPreferences",
+            "dataType": "string",
+            "sourceColumn": "UserPreferences"
+          },
+          {
+            "name": "PhoneNumber",
+            "dataType": "string",
+            "sourceColumn": "PhoneNumber"
+          },
+          {
+            "name": "FaxNumber",
+            "dataType": "string",
+            "sourceColumn": "FaxNumber"
+          },
+          {
+            "name": "EmailAddress",
+            "dataType": "string",
+            "sourceColumn": "EmailAddress"
+          },
+          {
+            "name": "CustomFields",
+            "dataType": "string",
+            "sourceColumn": "CustomFields"
+          },
+          {
+            "name": "OtherLanguages",
+            "dataType": "string",
+            "sourceColumn": "OtherLanguages"
+          },
+          {
+            "name": "LastEditedBy",
+            "dataType": "int64",
+            "sourceColumn": "LastEditedBy"
+          },
+          {
+            "name": "ValidFrom",
+            "dataType": "dateTime",
+            "sourceColumn": "ValidFrom"
+          },
+          {
+            "name": "ValidTo",
+            "dataType": "dateTime",
+            "sourceColumn": "ValidTo"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ML-RefVm-822010\\MORALLES_24;Datawarehouse_WWI\",",
+                "    dbo_DIM_PEOPLE = Source{[Schema=\"dbo\",Item=\"DIM_PEOPLE\"]}[Data]",
+                "in",
+                "    dbo_DIM_PEOPLE"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DIM_PRODUCT",
+        "columns": [
+          {
+            "name": "StockItemID",
+            "dataType": "int64",
+            "sourceColumn": "StockItemID"
+          },
+          {
+            "name": "StockItemName",
+            "dataType": "string",
+            "sourceColumn": "StockItemName"
+          },
+          {
+            "name": "ColorName",
+            "dataType": "string",
+            "sourceColumn": "ColorName"
+          },
+          {
+            "name": "ColorID",
+            "dataType": "int64",
+            "sourceColumn": "ColorID"
+          },
+          {
+            "name": "StockGroupID",
+            "dataType": "int64",
+            "sourceColumn": "StockGroupID"
+          },
+          {
+            "name": "StockGroupName",
+            "dataType": "string",
+            "sourceColumn": "StockGroupName"
+          },
+          {
+            "name": "QuantityOnHand",
+            "dataType": "int64",
+            "sourceColumn": "QuantityOnHand"
+          },
+          {
+            "name": "LastStocktakeQuantity",
+            "dataType": "int64",
+            "sourceColumn": "LastStocktakeQuantity"
+          },
+          {
+            "name": "BinLocation",
+            "dataType": "string",
+            "sourceColumn": "BinLocation"
+          },
+          {
+            "name": "LastEditedWhen",
+            "dataType": "dateTime",
+            "sourceColumn": "LastEditedWhen"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ML-RefVm-822010\\MORALLES_24;Datawarehouse_WWI\",",
+                "    dbo_DIM_PRODUCT = Source{[Schema=\"dbo\",Item=\"DIM_PRODUCT\"]}[Data]",
+                "in",
+                "    dbo_DIM_PRODUCT"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DIM_SALES",
+        "columns": [
+          {
+            "name": "OrderID",
+            "dataType": "int64",
+            "sourceColumn": "OrderID"
+          },
+          {
+            "name": "OrderDate",
+            "dataType": "dateTime",
+            "sourceColumn": "OrderDate"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "CustomerName",
+            "dataType": "string",
+            "sourceColumn": "CustomerName"
+          },
+          {
+            "name": "StockItemID",
+            "dataType": "int64",
+            "sourceColumn": "StockItemID"
+          },
+          {
+            "name": "StockItemName",
+            "dataType": "string",
+            "sourceColumn": "StockItemName"
+          },
+          {
+            "name": "Brand",
+            "dataType": "string",
+            "sourceColumn": "Brand"
+          },
+          {
+            "name": "Size",
+            "dataType": "string",
+            "sourceColumn": "Size"
+          },
+          {
+            "name": "ColorID",
+            "dataType": "int64",
+            "sourceColumn": "ColorID"
+          },
+          {
+            "name": "ColorName",
+            "dataType": "string",
+            "sourceColumn": "ColorName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ML-RefVm-822010\\MORALLES_24;Datawarehouse_WWI\",",
+                "    dbo_DIM_SALES = Source{[Schema=\"dbo\",Item=\"DIM_SALES\"]}[Data]",
+                "in",
+                "    dbo_DIM_SALES"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FACT_TABLE_ORDERS",
+        "columns": [
+          {
+            "name": "OrderID",
+            "dataType": "int64",
+            "sourceColumn": "OrderID"
+          },
+          {
+            "name": "InvoiceID",
+            "dataType": "int64",
+            "sourceColumn": "InvoiceID"
+          },
+          {
+            "name": "OrderDate",
+            "dataType": "dateTime",
+            "sourceColumn": "OrderDate"
+          },
+          {
+            "name": "InvoiceDate",
+            "dataType": "dateTime",
+            "sourceColumn": "InvoiceDate"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "CustomerName",
+            "dataType": "string",
+            "sourceColumn": "CustomerName"
+          },
+          {
+            "name": "StockItemID",
+            "dataType": "int64",
+            "sourceColumn": "StockItemID"
+          },
+          {
+            "name": "StockItemName",
+            "dataType": "string",
+            "sourceColumn": "StockItemName"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description"
+          },
+          {
+            "name": "PackageTypeID",
+            "dataType": "int64",
+            "sourceColumn": "PackageTypeID"
+          },
+          {
+            "name": "PackageTypeName",
+            "dataType": "string",
+            "sourceColumn": "PackageTypeName"
+          },
+          {
+            "name": "DeliveryMethodID",
+            "dataType": "int64",
+            "sourceColumn": "DeliveryMethodID"
+          },
+          {
+            "name": "DeliveryMethodName",
+            "dataType": "string",
+            "sourceColumn": "DeliveryMethodName"
+          },
+          {
+            "name": "Quantity",
+            "dataType": "int64",
+            "sourceColumn": "Quantity"
+          },
+          {
+            "name": "UnitPrice",
+            "dataType": "double",
+            "sourceColumn": "UnitPrice",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Total",
+            "dataType": "double",
+            "sourceColumn": "Total",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "TaxRate",
+            "dataType": "double",
+            "sourceColumn": "TaxRate",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "TaxAmount",
+            "dataType": "double",
+            "sourceColumn": "TaxAmount",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Total_with_Tax",
+            "dataType": "double",
+            "sourceColumn": "Total_with_Tax",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "LineProfit",
+            "dataType": "double",
+            "sourceColumn": "LineProfit",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Unit_Tax",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": [
+              "FACT_TABLE_ORDERS[TaxAmount] / FACT_TABLE_ORDERS[Quantity]",
+              ""
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "%Per_sale",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": [
+              "DIVIDE(",
+              "    FACT_TABLE_ORDERS[LineProfit],",
+              "    FACT_TABLE_ORDERS[Total_with_Tax],",
+              "    0",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ML-RefVm-822010\\MORALLES_24;Datawarehouse_WWI\",",
+                "    dbo_FACT_TABLE_ORDERS = Source{[Schema=\"dbo\",Item=\"FACT_TABLE_ORDERS\"]}[Data]",
+                "in",
+                "    dbo_FACT_TABLE_ORDERS"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sum of Unit_Tax",
+            "expression": "SUM([Unit_Tax])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Average of %Per_sale",
+            "expression": "AVERAGE([%Per_sale])",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "Average of TaxAmount",
+            "expression": "AVERAGE([TaxAmount])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sum of LineProfit",
+            "expression": "SUM([LineProfit])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sum of Total_with_Tax",
+            "expression": "SUM([Total_with_Tax])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "perspectives": [
+      {
+        "name": "INVENTARIO",
+        "tables": [
+          {
+            "name": "DIM_PRODUCT",
+            "columns": [
+              {
+                "name": "BinLocation"
+              },
+              {
+                "name": "ColorID"
+              },
+              {
+                "name": "ColorName"
+              },
+              {
+                "name": "LastEditedWhen"
+              },
+              {
+                "name": "LastStocktakeQuantity"
+              },
+              {
+                "name": "QuantityOnHand"
+              },
+              {
+                "name": "StockGroupID"
+              },
+              {
+                "name": "StockGroupName"
+              },
+              {
+                "name": "StockItemID"
+              },
+              {
+                "name": "StockItemName"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "VENTAS",
+        "tables": [
+          {
+            "name": "DIM_SALES",
+            "columns": [
+              {
+                "name": "Brand"
+              },
+              {
+                "name": "ColorID"
+              },
+              {
+                "name": "ColorName"
+              },
+              {
+                "name": "CustomerID"
+              },
+              {
+                "name": "CustomerName"
+              },
+              {
+                "name": "OrderDate"
+              },
+              {
+                "name": "OrderID"
+              },
+              {
+                "name": "Size"
+              },
+              {
+                "name": "StockItemID"
+              },
+              {
+                "name": "StockItemName"
+              }
+            ]
+          },
+          {
+            "name": "FACT_TABLE_ORDERS",
+            "columns": [
+              {
+                "name": "%Per_sale"
+              },
+              {
+                "name": "CustomerID"
+              },
+              {
+                "name": "CustomerName"
+              },
+              {
+                "name": "DeliveryMethodID"
+              },
+              {
+                "name": "DeliveryMethodName"
+              },
+              {
+                "name": "Description"
+              },
+              {
+                "name": "InvoiceDate"
+              },
+              {
+                "name": "InvoiceID"
+              },
+              {
+                "name": "LineProfit"
+              },
+              {
+                "name": "OrderDate"
+              },
+              {
+                "name": "OrderID"
+              },
+              {
+                "name": "PackageTypeID"
+              },
+              {
+                "name": "PackageTypeName"
+              },
+              {
+                "name": "Quantity"
+              },
+              {
+                "name": "StockItemID"
+              },
+              {
+                "name": "StockItemName"
+              },
+              {
+                "name": "TaxAmount"
+              },
+              {
+                "name": "TaxRate"
+              },
+              {
+                "name": "Total"
+              },
+              {
+                "name": "Total_with_Tax"
+              },
+              {
+                "name": "Unit_Tax"
+              },
+              {
+                "name": "UnitPrice"
+              }
+            ],
+            "measures": [
+              {
+                "name": "Average of %Per_sale"
+              },
+              {
+                "name": "Average of TaxAmount"
+              },
+              {
+                "name": "Sum of LineProfit"
+              },
+              {
+                "name": "Sum of Total_with_Tax"
+              },
+              {
+                "name": "Sum of Unit_Tax"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "COMPRAS",
+        "tables": [
+          {
+            "name": "DIM SUPPLIERS",
+            "columns": [
+              {
+                "name": "DeliveryMethodID"
+              },
+              {
+                "name": "DeliveryMethodName"
+              },
+              {
+                "name": "EmailAddress"
+              },
+              {
+                "name": "FullName"
+              },
+              {
+                "name": "PhoneNumber"
+              },
+              {
+                "name": "PrimaryContactPersonID"
+              },
+              {
+                "name": "StockItemID"
+              },
+              {
+                "name": "StockItemName"
+              },
+              {
+                "name": "SupplierCategoryID"
+              },
+              {
+                "name": "SupplierCategoryName"
+              },
+              {
+                "name": "SupplierID"
+              },
+              {
+                "name": "SupplierName"
+              }
+            ]
+          },
+          {
+            "name": "DIM_LOCATION",
+            "columns": [
+              {
+                "name": "CityID"
+              },
+              {
+                "name": "CityName"
+              },
+              {
+                "name": "CityPopulation"
+              },
+              {
+                "name": "Continent"
+              },
+              {
+                "name": "CountryID"
+              },
+              {
+                "name": "CountryName"
+              },
+              {
+                "name": "CountryPopulation"
+              },
+              {
+                "name": "StatePopulation"
+              },
+              {
+                "name": "StateProvinceCode"
+              },
+              {
+                "name": "StateProvinceID"
+              },
+              {
+                "name": "StateProvinceName"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "roles": [
+      {
+        "name": "VENTAS",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "DIM SUPPLIERS",
+            "metadataPermission": "none"
+          },
+          {
+            "name": "DIM_PEOPLE",
+            "metadataPermission": "none"
+          }
+        ]
+      },
+      {
+        "name": "GERENCIA",
+        "modelPermission": "readRefresh"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
